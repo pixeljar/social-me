@@ -20,7 +20,11 @@ class socmeTwitter {
 	}
 	
 	function admin_menu() {
+		global $socmeMenus;
 		$socme_twitter_menu = add_submenu_page( SOCME, 'Twitter Config', 'Twitter Configuration', 'manage_options', SOCME.'-twitter', array( &$this, 'twitter_menu' ) );
+		
+		add_action( 'admin_print_scripts-'.$socme_twitter_menu, array( &$socmeMenus, 'add_js' ), 1 );
+		add_action( 'admin_print_styles-'. $socme_twitter_menu, array( &$socmeMenus, 'add_css' ), 1 );
 	}
 	
 	function twitter_menu() {

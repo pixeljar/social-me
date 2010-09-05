@@ -1,6 +1,45 @@
 #icon-social-me {
-	background: url("../icons/social-me-32.png") no-repeat scroll 0 0 transparent;
+	background: url("../icons/social-me-32.png") no-repeat scroll 0 2px transparent;
 }
 #icon-social-me-ext {
 	background: url("../icons/social-me-ext.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-delicious {
+	background: url("../icons/delicious.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-facebook {
+	background: url("../icons/facebook.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-flickr {
+	background: url("../icons/flickr.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-linkedin {
+	background: url("../icons/linkedin.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-meetup {
+	background: url("../icons/meetup.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-posterous {
+	background: url("../icons/posterous.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-slideshare {
+	background: url("../icons/slideshare.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-stumbleupon {
+	background: url("../icons/stumbleupon.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-technorati {
+	background: url("../icons/technorati.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-tumblr {
+	background: url("../icons/tumblr.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-twitter {
+	background: url("../icons/twitter.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-yelp {
+	background: url("../icons/yelp.png") no-repeat scroll 0 0 transparent;
+}
+#icon-social-me-youtube {
+	background: url("../icons/youtube.png") no-repeat scroll 0 0 transparent;
 }

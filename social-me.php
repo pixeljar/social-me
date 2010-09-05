@@ -11,6 +11,14 @@ Text Domain: social-me
 */
 
 /**
+ * SOCIAL ME PLUGIN ICON BY
+ * http://www.vecteezy.com/members/hertzz
+ *
+ * SOCIAL MEDIA ICONS BY
+ * http://icondock.com/free/vector-social-media-icons
+ */
+
+/**
  * Copyright (c) 2010 Your Name. All rights reserved.
  *
  * Released under the GPL license
