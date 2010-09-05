@@ -49,3 +49,13 @@ load_plugin_textdomain( SOCME, null, SOCME_REL );
 // INCLUDE NECESSARY FILES
 require_once( SOCME_CORE.'admin-menus.php' );
 require_once( SOCME_CORE.'extension-loader.php' );
+
+
+/* DEBUG HELPERS
+************************************/
+function pring_r( $arr ) {
+	echo _pring_r( $arr );
+}
+	function _pring_r( $arr ) {
+		return '<pre>'.print_r( $arr, true ).'</pre>';
+	}
