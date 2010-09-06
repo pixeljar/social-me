@@ -25,7 +25,7 @@ class socmeMenus {
 		add_action( 'admin_print_scripts-'.$socme_main_menu, array( &$this, 'add_js' ), 1 );
 		add_action( 'admin_print_styles-'. $socme_main_menu, array( &$this, 'add_css' ), 1 );
 		
-		$socme_conf_menu = add_submenu_page( SOCME, 'Configure', 'Configure', 'manage_options', SOCME, array( &$this, 'main_menu' ) );
+		$socme_conf_menu = add_submenu_page( SOCME, 'Dashboard', 'Dashboard', 'manage_options', SOCME, array( &$this, 'main_menu' ) );
 		add_action( 'admin_print_scripts-'.$socme_conf_menu, array( &$this, 'add_js' ), 1 );
 		add_action( 'admin_print_styles-'. $socme_conf_menu, array( &$this, 'add_css' ), 1 );
 		

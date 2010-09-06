@@ -34,7 +34,7 @@ endif;
 <div class="wrap">
 
 	<?php screen_icon( 'plugins' ); ?>
-	<h2><?php _e( 'Manage Extensions', SOCME ); ?></h2>
+	<h2><?php _e( 'Manage Extensions', SOCME ); ?> <a href="http://pixeljar.net" target="_blank" title="<?php _e( 'Browse Extensions', SOCME ); ?>" class="button add-new-h2"><?php _e( 'Browse Extensions', SOCME ); ?></a></h2>
 	<form method="post">
 		<?php wp_nonce_field( SOCME.'-bulk-manage-extensions' ); ?>
 

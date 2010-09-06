@@ -41,3 +41,12 @@ class socmeFlickr {
 }
 
 $socmeFlickr = new socmeFlickr;
+
+
+/*
+Key:
+341bca6983663dbb3b7bbf051282a5b5
+
+Secret:
+cb5e1c8f7f56129c 
+/**/
