@@ -756,7 +756,7 @@ class OAuthRequest
 				fclose($fh);
 			}
 		}
-		return $body;
+		// return $body;
 	}
 
 	
