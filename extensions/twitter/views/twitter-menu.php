@@ -2,6 +2,8 @@
 	<?php
 		$credentials = maybe_unserialize( get_option( 'socme-twitter-credentials', array() ) );
 		extract( $credentials );
+		if( !empty( $oauth_token ) )
+			$connection = new TwitterOAuth( TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, $oauth_token, $oauth_token_secret );
 		$button_text = ( !empty( $screen_name ) ? __( sprintf( 'Deauthorize account %s', $screen_name ), SOCME ) : __( 'Authorize Twitter Account', SOCME ) );
 		$button_action = ( !empty( $screen_name ) ? 'http://twitter.com/settings/connections' : admin_url( 'admin.php?page='.SOCME.'-twitter&socme-twitter-oauth=auth' ) );
 	?>
@@ -12,8 +14,34 @@
 		<div id="message" class="updated"><p><?php _e( sprintf( 'Twitter account <strong>%s</strong> authorized.', $screen_name ), SOCME) ?></p></div>
 	<?php endif; ?>
 	<form method="post">
-		<h3>Section Name</h3>
-		<p>Description of this section</p>
+		
+		<?php if( !empty( $screen_name ) ) :
+			$user = $connection->get( 'account/verify_credentials' );
+			// pring_r( $user );
+		?>
+		<div id="twitter-profile" style="display: block; border: 1px solid #ccc; padding: 10px; margin-top: 20px;">
+			<div id="avatar" style="float: left; padding: 0 10px 10px 0;"><img src="<?php echo $user->profile_image_url; ?>" /></div>
+			<div id="info">
+				<?php _e( sprintf( '%sName:%s %s (%s)', '<strong>', '</strong>', $user->name, '<a href="twitter.com/'.$user->screen_name.'">@'.$user->screen_name.'</a>' ), SOCME ); ?><br />
+				<?php _e( sprintf( '%sLocation:%s %s', '<strong>', '</strong>', $user->location ), SOCME ); ?><br />
+				<?php _e( sprintf( '%sURL:%s %s%s%s', '<strong>', '</strong>', '<a href="'.$user->url.'" target="_blank">', $user->url, '</a>' ), SOCME ); ?><br />
+				<?php echo wpautop( $user->description ); ?><br />
+				
+				<?php _e( sprintf( 'Following: %s', $user->friends_count ), SOCME ); ?> |
+				<?php _e( sprintf( 'Followers: %s', $user->followers_count ), SOCME ); ?> |
+				<?php _e( sprintf( 'Listed: %s', $user->listed_count ), SOCME ); ?> |
+				<?php _e( sprintf( 'Total Tweets: %s', $user->statuses_count ), SOCME ); ?>
+			</div>
+		</div>
+		
+		
+		<h3><?php _e( 'Import Tweets', SOCME ); ?></h3>
+		<p><?php _e( 'Don\'t let Twitter own all of the content that you\'ve created. Import your tweets as WordPress posts and be sure to tweet from the tweet menu in the left-hand navigation so you never lose control of your content again.', SOCME ); ?></p>
+		<p class="submit"><input class="button-secondary" type="button" value="<?php _e( 'Import Tweets', SOCME ); ?>" onclick="location.href='<?php echo admin_url( 'admin.php?page='.SOCME.'-twitter&socme-twitter-import=start' ); ?>';" />
+		
+			
+		<h3><?php _e( sprintf( 'Account Details for %s', $screen_name ), SOCME ); ?></h3>
+		<p><?php _e( '', SOCME ); ?></p>
 	
 		<table class="form-table">
 		<tbody>
@@ -33,7 +61,7 @@
 		</tr>
 		</tbody>
 		</table>
-	
+		<?php endif; ?>
 	
 		<p class="submit"><input class="button-primary" type="submit" value="<?php _e( 'Save Changes', SOCME ); ?>" name="Submit" /></p>
 	</form>
