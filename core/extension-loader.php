@@ -11,6 +11,8 @@ class socmeExtensionLoader {
 	}
 
 	function init() {
+		$directories = array( SOCME_EXT, WP_PLUGIN_DIR );
+		$directories = apply_filters( 'socme_extensions_search_directories', $directories);
 		$d = dir( SOCME_EXT );
 		while ( false !== ( $entry = $d->read() ) ) :
 			if( $entry[0] != '.' && substr( $entry, -3 ) == 'php' ) :

@@ -34,29 +34,42 @@
 			</div>
 		</div>
 		
-		
 		<h3><?php _e( 'Import Tweets', SOCME ); ?></h3>
-		<p><?php _e( 'Don\'t let Twitter own all of the content that you\'ve created. Import your tweets as WordPress posts and be sure to tweet from the tweet menu in the left-hand navigation so you never lose control of your content again.', SOCME ); ?></p>
+		<p><?php _e( 'Don\'t let Twitter own the content that you\'ve worked so hard to create. Import your tweets as WordPress posts and be sure to tweet from the tweet menu in the left-hand navigation so you never lose control of your content again.', SOCME ); ?></p>
 		<p class="submit"><input class="button-secondary" type="button" value="<?php _e( 'Import Tweets', SOCME ); ?>" onclick="location.href='<?php echo admin_url( 'admin.php?page='.SOCME.'-twitter&socme-twitter-import=start' ); ?>';" />
 		
 			
-		<h3><?php _e( sprintf( 'Account Details for %s', $screen_name ), SOCME ); ?></h3>
-		<p><?php _e( '', SOCME ); ?></p>
+		<h3><?php _e( 'Twitter Button', SOCME ); ?></h3>
+		<p><?php _e( 'Twitter provides a twitter button to make it easier for your visitors to share your content. We can automatically include the Twitter button in each of your blog posts and pages.', SOCME ); ?></p>
 	
 		<table class="form-table">
 		<tbody>
 		<tr valign="top">
-			<th scope="row"><label for="setting_name">Setting Name</label></th>
-			<td><input type="text" name="setting_name" id="setting_name" /></td>
+			<th scope="row"><label for="socme_twitter_button_active">Use Twitter Button?</label></th>
+			<td>
+				<input type="checkbox" name="socme_twitter_button_active" id="socme_twitter_button_active" value="1" />
+			</td>
 		</tr>
 		<tr valign="top">
-			<th scope="row"><label for="setting_name_2">Setting Name 2</label></th>
+			<th scope="row">Twitter Button Style</th>
 			<td>
-				<textarea name="setting_name_2" id="setting_name_2" rows="5" cols="40"></textarea>
-				<p>
-					<input type="checkbox" name="setting_name_3" id="setting_name_3" value="1" />
-					<label for="setting_name_3">Do you want to check this box?</label>
-				</p>
+				<div style="min-height: 100px; width: 115px; float: left; margin-right: 10px; background: url('<?php echo SOCME_URL.'extensions/twitter/images/tweetv.png' ?>') no-repeat 20px 30px;">
+					<input type="radio" name="socme_twitter_button_style[]" id="socme_twitter_button_vertical" value="vertical" /> <label for="socme_twitter_button_vertical">Vertical count</label>
+				</div>
+				<div style="min-height: 100px; width: 130px; float: left; margin-right: 10px; background: url('<?php echo SOCME_URL.'extensions/twitter/images/tweeth.png' ?>') no-repeat 20px 50px;">
+					<input type="radio" name="socme_twitter_button_style[]" id="socme_twitter_button_horizontal" value="horizontal" /> <label for="socme_twitter_button_horizontal">Horizontal count</label>
+				</div>
+				<div style="min-height: 100px; width: 130px; float: left; margin-right: 10px; background: url('<?php echo SOCME_URL.'extensions/twitter/images/tweetn.png' ?>') no-repeat 20px 50px;">
+					<input type="radio" name="socme_twitter_button_style[]" id="socme_twitter_button_nocount" value="no-count"/> <label for="socme_twitter_button_nocount">No count</label>
+				</div>
+			</td>
+		</tr>
+		<tr valign="top">
+			<th scope="row">Twitter Button Position</th>
+			<td>
+				<input type="radio" name="socme_twitter_button_position[]" id="socme_twitter_button_tl" value="1" /> <label for="socme_twitter_button_tl">Top left</label>
+				<input type="radio" name="socme_twitter_button_position[]" id="socme_twitter_button_tr" value="2" /> <label for="socme_twitter_button_tr">Top right</label>
+				<input type="radio" name="socme_twitter_button_position[]" id="socme_twitter_button_bl" value="3"/> <label for="socme_twitter_button_b">Below</label>
 			</td>
 		</tr>
 		</tbody>

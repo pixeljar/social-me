@@ -12,15 +12,24 @@ define( 'TWITTER_CONSUMER_KEY', 'YxzShDAMGswyCcby1LKSQ' );
 define( 'TWITTER_CONSUMER_SECRET', 'G2hBY89iFY8nz0c7HZ7GUtJnCCDS0kbzt3XfE0K6TE' );
 define( 'TWITTER_OAUTH_CALLBACK', admin_url( 'admin.php?page='.SOCME.'-twitter&socme-twitter-oauth=confirmed' ) );
 require_once( 'twitter/oauth/twitteroauth.php' );
+require_once( 'twitter/widgets/twitter-widgets.php' );
 class socmeTwitter {
 
 	function __construct() {
+		wp_register_script( 'twitter-share', 'http://platform.twitter.com/widgets.js', array(), '1.0', false );
+		wp_register_script( 'twitter-widgets', 'http://widgets.twimg.com/j/2/widget.js', array(), '1.0', false );
 		add_action( 'init', array( &$this, 'init' ) );
 		add_action( 'admin_init', array( &$this, 'parse_request' ) );
 		add_filter( 'query_vars', array( &$this, 'query_vars' ) );
 		add_filter( 'manage_posts_columns', array( &$this, 'columns' ), 10, 2 );
 		add_action( 'manage_posts_custom_column', array( &$this, 'column_data' ), 10, 2 );
 		add_action( 'save_post', array( &$this, 'save_post' ) );
+		add_action( 'wp_head', array( &$this, 'twitter_widgets' ), 1 );
+		add_shortcode( 'twitter-share', array( &$this, 'twitter_share_shortcode' ) );
+		
+		$twitter_button = get_option( 'socme-twitter-button-active', 0 );
+		if( $twitter_button )
+			add_filter( 'the_content', array( &$this, 'twitter_share' ) );
 	}
 
 	function init() {
@@ -292,6 +301,38 @@ class socmeTwitter {
 			return $post_id;
 		endif;
 	}
+	
+	function twitter_widgets() {
+		wp_enqueue_script( 'twitter-share' );
+		wp_enqueue_script( 'twitter-widgets' );
+	}
+	
+	function twitter_share( $content ) {
+		$position = get_option( 'socme-twitter-button-position', 0 );
+		$share_link = '<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="brandondove">Tweet</a>';
+		if( $position == 1 || $position == 2 ) :
+			$float = ( $position == 1 ) ? 'left' : 'right';
+			return '<div style="float: '.$float.'">'.$share_link.'</div>'.$content;
+		elseif( $position == 3 ) :
+			return $content.'<div style="display: block;">'.$share_link.'</div>';
+		endif;
+	}
+	
+	function twitter_share_shortcode( $atts ) {
+			$atts = extract( shortcode_atts( array( 'style'=>'vertical', 'float' => 'none' ), $atts ) );
+			echo $this->_twitter_share_link( $style, $float );
+	}
+	
+	function twitter_share_link( $style='vertical', $float='none' ) {
+		echo _twitter_share_link( $atts );
+	}
+		function _twitter_share_link( $style='vertical', $float='none' ) {
+			global $post;
+			$credentials = get_option( 'socme-twitter-credentials', array() );
+			$share_link = '<a href="http://twitter.com/share" class="twitter-share-button" data-count="'.$style.'" data-url="'.get_permalink( $post->ID ).'" data-via="'.$credentials['screen_name'].'">Tweet</a>';
+			$margin = ( $float == 'left' || $float == 'none' ) ? ' margin-right: 10px;' : ' margin-left: 10px;';
+			return '<div style="float: '.$float.';'.$margin.'">'.$share_link.'</div>';
+		}
 }
 
 $socmeTwitter = new socmeTwitter;
