@@ -4,8 +4,9 @@
 Plugin Name: Social Me
 Plugin URI: http://pixeljar.net/
 Description: Allows you to import from and post to various social networks.
-Version: 0.1
+Version: 0.2
 Author: Pixel Jar
+Contributors: 
 Author URI: http://pixeljar.net/
 Text Domain: social-me
 */

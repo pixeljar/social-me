@@ -4,7 +4,7 @@ Donate link: url
 Tags: Social Media, Web 2.0, Custom Post Type
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: .1
+Stable tag: .2
  
 This plugin is built to handle storing of social media posts as WordPress custom post types. It has an extension manager for developers to add extensions for their favorite social networks.
 
@@ -26,6 +26,11 @@ If there is already an extension (not plugin) coded to the "Social Me" standards
 == Screenshots ==
 
 == Changelog ==
+
+= 0.2 =
+
+- Switched twitter oAuth libraries
+- Created a core extension class
 
 = 0.1 =
 

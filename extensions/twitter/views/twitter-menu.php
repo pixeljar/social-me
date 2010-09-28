@@ -8,7 +8,14 @@
 		$button_action = ( !empty( $screen_name ) ? 'http://twitter.com/settings/connections' : admin_url( 'admin.php?page='.SOCME.'-twitter&socme-twitter-oauth=auth' ) );
 	?>
 	<?php screen_icon( 'social-me-twitter' ); ?>
-	<h2><?php _e( 'Twitter', SOCME ); ?> <a href="<?php echo $button_action; ?>" title="<?php echo $button_text; ?>" class="button add-new-h2 thickbox"><?php echo $button_text; ?></a></h2>
+	<h2><?php _e( 'Twitter', SOCME ); ?> <a href="<?php echo $button_action; ?>" title="<?php echo $button_text; ?>" class="button add-new-h2 thickbox"><?php echo $button_text; ?></a>
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="float: right; padding-top: 5px;">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="hosted_button_id" value="Y9Q4W7JJZ588Y">
+		<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	</form>
+	</h2>
 
 	<?php if ( isset($_GET['success']) ) : ?>
 		<div id="message" class="updated"><p><?php _e( sprintf( 'Twitter account <strong>%s</strong> authorized.', $screen_name ), SOCME) ?></p></div>

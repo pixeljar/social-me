@@ -251,7 +251,7 @@ class socmeTwitter {
 				$terms = wp_get_object_terms( $post_id, 'hash_tag', $term_args );
 				if( $terms ) {
 					$my_func = create_function( '$term',
-												'return "<a href=\"edit.php?post_type=socme-twitter&hash_tag=".$term->slug."\">".$term->name."</a>";');
+												'return "<a href=\"edit.php?post_type=socme-tweet&hash_tag=".$term->slug."\">".$term->name."</a>";');
 					$text = array_map( $my_func, $terms, array( $column_name ) );
 					echo implode(', ', $text);
 				} else {
